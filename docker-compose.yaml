@@ -8,4 +8,4 @@ services:
     container_name: todo
     restart: always
     environment:
-      - MONGODB_URI=$MONGODB_URI
+      - MONGO_URI=$MONGO_URI
