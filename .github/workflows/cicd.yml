@@ -45,7 +45,7 @@ jobs:
           echo ${{ secrets.MONGODB_URI }}
           MONGODB_URI=${{ secrets.MONGODB_URI }}
           docker compose down || true          
-          docker compose up -d -e MONGODB_URI=$MONGODB_URI
+          MONGODB_URI=$MONGODB_URI docker compose up -d
 
       - name: Clean up old backups
         run: |
