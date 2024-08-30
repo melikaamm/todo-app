@@ -8,4 +8,4 @@ services:
     container_name: todo
     restart: always
     environment:
-      - MONGODB_URI=mongodb+srv://meysambhrmi:US4QZwIvlPbyClH9@cluster0.erlyr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - MONGODB_URI=$MONGODB_URI
