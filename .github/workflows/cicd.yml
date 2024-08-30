@@ -13,8 +13,8 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted
     environment: production
-    env: 
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+    # env: 
+    #   MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     steps:
       - name: Checkout code
@@ -41,11 +41,9 @@ jobs:
         run: |
           APP_DIR="/home/ubuntu/app/todo"        
           cd $APP_DIR        
-          echo $MONGODB_URI
-          echo ${{ secrets.MONGODB_URI }}
-          MONGODB_URI=${{ secrets.MONGODB_URI }}
+          MONGO_URI=${{ secrets.MONGO_URI }}
           docker compose down || true          
-          MONGODB_URI=$MONGODB_URI docker compose up -d
+          MONGO_URI=$MONGO_URI docker compose up -d
 
       - name: Clean up old backups
         run: |
