@@ -12,9 +12,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: self-hosted
+    environment: production
     env: 
       MONGODB_URI: ${{ secrets.MONGODB_URI }}
-      
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -42,6 +43,7 @@ jobs:
           cd $APP_DIR        
           echo $MONGODB_URI
           echo ${{ secrets.MONGODB_URI }}
+          MONGODB_URI=${{ secrets.MONGODB_URI }}
           docker compose down || true          
           MONGODB_URI=$MONGODB_URI docker compose up -d
 
