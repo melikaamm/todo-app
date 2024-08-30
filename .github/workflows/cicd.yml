@@ -34,6 +34,8 @@ jobs:
           docker compose build
 
       - name: Docker Compose Up
+        env: 
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: |
           APP_DIR="/home/ubuntu/app/todo"        
           cd $APP_DIR        
