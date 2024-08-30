@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/init-cicd
+      - main
   pull_request:
     branches:
       - main
