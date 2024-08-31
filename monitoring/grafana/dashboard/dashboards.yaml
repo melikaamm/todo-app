@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: node-exporter
+    folder: node-exporter
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards/node_exporter.json
