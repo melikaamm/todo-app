@@ -51,4 +51,3 @@ volumes:
 networks:
   todo_default:
     external: true
-    
