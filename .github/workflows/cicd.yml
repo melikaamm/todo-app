@@ -3,7 +3,7 @@ name: TODO Pipeline
 on:
   push:
     paths:
-     - **
+     - "**"
      - '!monitoring/**'
     branches:
       - feat/init-cicd
