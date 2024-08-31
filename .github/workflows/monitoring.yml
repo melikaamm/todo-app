@@ -34,7 +34,7 @@ jobs:
 
       - name: Docker Compose Up
         run: |
-          APP_DIR="/home/ubuntu/app/todo"        
+          APP_DIR="/home/ubuntu/app/monitoring"        
           cd $APP_DIR
           GRAFANA_PASSWORD=${{ secrets.GRAFANA_PASSWORD }}
           docker compose down || true          
