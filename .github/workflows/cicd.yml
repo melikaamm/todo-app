@@ -41,9 +41,9 @@ jobs:
         run: |
           APP_DIR="/home/ubuntu/app/todo"        
           cd $APP_DIR        
-          MONGO_URI=${{ secrets.MONGO_URI }}
+          MONGODB_URI=${{ secrets.MONGODB_URI }}
           docker compose down || true          
-          MONGO_URI=$MONGO_URI docker compose up -d
+          MONGODB_URI=$MONGODB_URI docker compose up -d
 
       - name: Clean up old backups
         run: |
