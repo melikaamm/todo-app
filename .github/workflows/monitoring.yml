@@ -1,9 +1,8 @@
-name: TODO Pipeline
-
+name: Monitoring Pipeline
 on:
   push:
     paths:
-    - !/monitoring
+    - /monitoring/**
     branches:
       - feat/init-cicd
       - main
@@ -12,12 +11,11 @@ on:
       - main
 
 jobs:
+  on:
   build-and-deploy:
     runs-on: self-hosted
     environment: production
     env: 
-      MONGODB_URI: ${{ secrets.MONGODB_URI }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -25,28 +23,23 @@ jobs:
       - name: Copy project to runner server
         run: |
           TIMESTAMP=$(date +%Y%m%d%H%M%S)
-          BACKUP_DIR="/home/ubuntu/app/backups/nextjs-app/$TIMESTAMP"
-          APP_DIR="/home/ubuntu/app/todo"
+          BACKUP_DIR="/home/ubuntu/app/backups/monitoring/$TIMESTAMP"
+          APP_DIR="/home/ubuntu/app/monitoring"
           mkdir -p $BACKUP_DIR
           mkdir -p $APP_DIR
           cp -r $APP_DIR* $BACKUP_DIR/
           rsync -av --delete . $APP_DIR
 
-      - name: Docker Compose Build
-        run: |
-          APP_DIR="/home/ubuntu/app/todo"        
-          cd $APP_DIR
-          docker compose build
 
       - name: Docker Compose Up
 
         run: |
           APP_DIR="/home/ubuntu/app/todo"        
           cd $APP_DIR        
-          MONGODB_URI=${{ secrets.MONGODB_URI }}
+          GRAFANA_PASSWORD=${{ secrets.GRAFANA_PASSWORD }}
           docker compose down || true          
-          MONGODB_URI=$MONGODB_URI docker compose up -d
+          GRAFANA_PASSWORD=$GRAFANA_PASSWORD docker compose up -d
 
       - name: Clean up old backups
         run: |
-          find /home/ubuntu/app/backups/nextjs-app/ -type d -mtime +30 -exec rm -rf {} \;
+          find /home/ubuntu/app/backups/monitoring/ -type d -mtime +30 -exec rm -rf {} \;
