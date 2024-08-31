@@ -29,14 +29,13 @@ jobs:
           mkdir -p $BACKUP_DIR
           mkdir -p $APP_DIR
           cp -r $APP_DIR* $BACKUP_DIR/
-          rsync -av --delete . $APP_DIR
+          rsync -av --delete ./monitoring $APP_DIR
 
 
       - name: Docker Compose Up
-
         run: |
           APP_DIR="/home/ubuntu/app/todo"        
-          cd $APP_DIR        
+          cd $APP_DIR
           GRAFANA_PASSWORD=${{ secrets.GRAFANA_PASSWORD }}
           docker compose down || true          
           GRAFANA_PASSWORD=$GRAFANA_PASSWORD docker compose up -d
