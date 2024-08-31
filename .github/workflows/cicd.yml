@@ -13,8 +13,8 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted
     environment: production
-    # env: 
-    #   MONGODB_URI: ${{ secrets.MONGODB_URI }}
+    env: 
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
     steps:
       - name: Checkout code
