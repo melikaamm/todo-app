@@ -4,7 +4,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+this repo contains todo application which is part of the [Devops Project](https://github.com/melikaamm/Devops) and also monitoring stack to visualizing the project and insfructure metrics.\
+link to IAC repo: [https://github.com/melikaamm/todo-app-iac](https://github.com/melikaamm/todo-app-iac)
 ### Built With
 
 * [Next.js](https://nextjs.org/)
@@ -24,26 +25,45 @@ This is an example of how to list things you need to use the software and how to
 * yarn = latest
 
 ### Installation
-
+You can run the app with docker-compose app or in your local with following commands:
 1. Clone the repo
    ```sh
    git clone https://github.com/disalad/todo-app.git
    ```
 2. Install 3rd party packages
-   ```sh
+   ```bash
    yarn install
    ```
 
-3. Enter your mongodb uri in an enviroment file in root directory.
-   ```env
-   MONGODB_URI = your mongodb uri
+3. Set your Mongodb URI as a variable.
+   ```bash
+   export MONGODB_URI = your mongodb uri
    ```
    
 4. Start app in a development server 
-   ```sh
+   ```bash
    yarn dev
    ```
-
+#### Run with docker compose
+1. First set your mongodb URI as a variable:
+   ```bash
+   export MONGODB_URI = your mongodb uri
+   ```
+2. Start app with the following command:
+   ```bash
+   docker compose up -d 
+   ```
+### Run monitoring stack 
+You can also run Prometheus, Grafana, and Node_exporter (Node_exporter will just work in Linux) by running the following command:
+```bash
+cd monitoring
+docker compose up -d 
+```
+## Deployment
+CI/CD for this project configured with Github actions, which the runner is deployed on a EC2 instance.\
+When app is deployed, you can access it via the following links:\
+1. todo app: [https://todo.melika.fit](https://todo.melika.fit)\
+2. grafana: [https://monitoring.melika.fit](https://monitoring.melika.fit)
 <!-- LICENSE -->
 ## License
 

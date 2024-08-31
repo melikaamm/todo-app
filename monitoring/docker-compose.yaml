@@ -8,7 +8,7 @@ services:
       - 9090:9090
     restart: unless-stopped
     networks:
-      - todo_default
+      - todo-app_default
     volumes:
       - ./prometheus:/etc/prometheus
       - prom_data:/prometheus
@@ -22,7 +22,7 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=$GRAFANA_PASSWORD
     networks:
-      - todo_default
+      - todo-app_default
     volumes:
       - ./grafana/datasource:/etc/grafana/provisioning/datasources
       - ./grafana/dashboard:/etc/grafana/provisioning/dashboards
@@ -30,7 +30,7 @@ services:
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
     networks:
-      - todo_default
+      - todo-app_default
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -49,6 +49,6 @@ services:
 volumes:
   prom_data:
 networks:
-  todo_default:
+  todo-app_default:
     external: true
     

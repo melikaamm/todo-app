@@ -30,7 +30,7 @@ jobs:
         run: |
           TIMESTAMP=$(date +%Y%m%d%H%M%S)
           BACKUP_DIR="/home/ubuntu/app/backups/nextjs-app/$TIMESTAMP"
-          APP_DIR="/home/ubuntu/app/todo"
+          APP_DIR="/home/ubuntu/app/todo-app"
           mkdir -p $BACKUP_DIR
           mkdir -p $APP_DIR
           cp -r $APP_DIR* $BACKUP_DIR/
@@ -38,14 +38,14 @@ jobs:
 
       - name: Docker Compose Build
         run: |
-          APP_DIR="/home/ubuntu/app/todo"        
+          APP_DIR="/home/ubuntu/app/todo-app"        
           cd $APP_DIR
           docker compose build
 
       - name: Docker Compose Up
 
         run: |
-          APP_DIR="/home/ubuntu/app/todo"        
+          APP_DIR="/home/ubuntu/app/todo-app"        
           cd $APP_DIR        
           MONGODB_URI=${{ secrets.MONGODB_URI }}
           docker compose down || true          
