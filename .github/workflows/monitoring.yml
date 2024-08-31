@@ -2,7 +2,7 @@ name: Monitoring Pipeline
 on:
   push:
     paths:
-    - /monitoring/**
+    - monitoring/**
     branches:
       - feat/init-cicd
       - main
