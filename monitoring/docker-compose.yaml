@@ -51,4 +51,3 @@ volumes:
 networks:
   todo-app_default:
     external: true
-    
