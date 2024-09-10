@@ -4,7 +4,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-this repo contains todo application which is part of the [Devops Project](https://github.com/melikaamm/Devops) and also monitoring stack to visualizing the project and insfructure metrics.\
+this repo contains todo application which is part of the [Devops Project](https://github.com/melikaamm/Devops) and also monitoring stack to visualizing the project and insfructure metrics.
+
+This project was developed with the assistance of ChatGPT and guidance from a friend who works as a DevOps engineer.
+
 link to IAC repo: [https://github.com/melikaamm/todo-app-iac](https://github.com/melikaamm/todo-app-iac)
 ### Built With
 
