@@ -32,7 +32,7 @@ function Home({ todos }) {
     return (
         <>
             <Head>
-                <title>Todos || Home</title>
+                <title>Todos || Melika</title>
                 <meta name='description' content='Todos || Manage your tasks easily' />
                 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
             </Head>
