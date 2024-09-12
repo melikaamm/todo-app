@@ -63,10 +63,24 @@ cd monitoring
 docker compose up -d 
 ```
 ## Deployment
-CI/CD for this project configured with Github actions, which the runner is deployed on a EC2 instance.\
-When app is deployed, you can access it via the following links:\
-1. todo app: [https://todo.melika.fit](https://todo.melika.fit)\
+By push or pull request, CI/CD will be trigger and app will be deploy on ec2 instance(via docker compose).
+
+When app is deployed, you can access it via the following links:
+1. todo app: [https://todo.melika.fit](https://todo.melika.fit)
 2. grafana: [https://monitoring.melika.fit](https://monitoring.melika.fit)
+
+## CI/CD Pipeline
+The CI/CD pipeline is set up using GitHub Actions, with the runner hosted on an EC2 instance. Two workflows are in place:
+
+1. Todo app workflow: Triggers on push or pull requests to the main branch, excluding the monitoring directory.
+2. Monitoring workflow: Triggers on push or pull requests within the monitoring directory.
+## Monitoring Stack
+The monitoring stack is built with Docker Compose and includes:
+
+Prometheus: For metrics collection.
+Grafana: For metrics visualization.
+Node Exporter: For system-level metrics monitoring.
+
 <!-- LICENSE -->
 ## License
 
